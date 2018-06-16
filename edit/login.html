@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>登陆</title>
+	<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../assets/css/signin.css" rel="stylesheet">
+	<script src="../assets/js/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+	<form class="form-signin">
+		<h2 class="form-signin-heading">请登录</h2>
+		<label for="inputUsername" class="sr-only">用户名</label>
+		<input type="text" id="username" class="form-control" placeholder="用户名" required="" autofocus="">
+		<label for="inputPassword" class="sr-only" >Password</label>
+		<input type="password" id="password" class="form-control" placeholder="密码" required="" style="margin-top: 20px">
+		<button class="btn btn-lg btn-primary btn-block" type="submit" id="submit" disabled="disabled" style="margin-top: 20px">登陆</button>
+	</form>
+</div>
+<script>
+    $(document).ready(function () {
+        if ($("#username").val() && $("#password").val()){
+            $("#submit").attr('disabled',false);
+        }
+        $("#username,#password").on('input paste', function () {
+            if ($.trim($("#username").val()) && $.trim($("#password").val())) {
+                $("#submit").attr('disabled', false);
+            }
+        });
+        $("#submit").click(function (event) {
+            event.preventDefault();
+            var username = $("#username").val();
+            var password = $("#password").val();
+            $.getJSON("validate.php", { 'username': username, 'password': password })
+                .done(function (result) {
+                    if (result.code === 0) {
+                        location.href = 'index.php';
+                    } else {
+                        alert("密码错误");
+                    }
+                })
+                .fail(function () {
+                    alert("网络错误");
+
+                });
+        });
+    })
+</script>
+</body>
+
+</html>

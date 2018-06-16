@@ -1,0 +1,111 @@
+.container {
+    padding: 0;
+    width: 1200px;
+}
+.row {
+    margin: 0 ;
+}
+.logo {
+    margin-top: 10px;
+    height: 70px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav {
+    display: flex;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    height: 60px;
+    background: -webkit-linear-gradient(#ab2832, #871c24);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#ab2832, #871c24);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#ab2832, #871c24);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(#ab2832, #871c24);
+    /* 标准的语法 */
+    color: white;
+    align-items: center;
+}
+
+.nav .nav-item {
+    width: 24%;
+    height: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction:column;
+}
+.nav .nav-item img{
+    display: none;
+}
+.nav-item.active{
+    background-color: black
+
+}
+.nav-item.active img {
+    display: inline-block;
+    position: absolute;
+    bottom:0;
+}
+.nav .nav-item a {
+    color: white !important;
+    border-right: 1px solid #84282f;
+    width: 100%;
+    text-align: center;
+}
+
+.nav .nav-item:hover {
+    background-color: black
+}
+
+.nav .nav-item:hover a {
+    color: white !important;
+}
+
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top:40px;
+    margin-bottom:20px;
+}
+.footer a {
+    color: rgba(123,124,124,1);
+
+}
+#events-title,
+#news-title {
+    height: 100%;
+    background: white;
+    border-top: 2px solid red;
+    width: 106px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.title {
+    height: 36px;;
+    background: #ddd3;
+    width: 100%;
+}
+.title .text {
+    height: 100%;
+    background: white;
+    border-top: 2px solid red;
+    width: 106px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -176,6 +176,7 @@ if ($uid == 'unknown') {
                             success: function (response) {
                                 let img = JSON.parse(response)['s3_img_link'];
                                 $('#summernote').summernote('insertImage', img);
+                                location.reload();
                             },
                             error: function () {
 

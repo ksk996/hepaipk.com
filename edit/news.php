@@ -12,7 +12,8 @@ if ($uid == 'unknown') {
 	<title>河牌网</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-	<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
+	<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"
+		  rel="stylesheet">
 	<style>
 		.main {
 			margin-top: 80px;
@@ -147,9 +148,8 @@ if ($uid == 'unknown') {
 <script src="../assets/js/jquery.Huploadify.js" rel="script"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
-<script src="../assets/js/bootstrap-markdown-editor.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js"></script>
 <script>
     $(document).ready(function () {
         var thumbnail = null;
@@ -206,10 +206,10 @@ if ($uid == 'unknown') {
                 alert("文章内容不能空");
                 return;
             }
-			if (!thumbnail) {
+            if (!thumbnail) {
                 alert("缩略图不能为空")
-				return;
-			}
+                return;
+            }
             $.post(
                 'save_news.php',
                 {
@@ -221,9 +221,9 @@ if ($uid == 'unknown') {
                     'is_recommend_news': is_recoomend_news
                 },
                 function (data, status) {
-                    if(status === 'success') {
+                    if (status === 'success') {
                         alert("添加成功");
-					}
+                    }
                 }
             )
         });

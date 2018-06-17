@@ -176,7 +176,6 @@ if ($uid == 'unknown') {
                             success: function (response) {
                                 let img = JSON.parse(response)['s3_img_link'];
                                 $('#summernote').summernote('insertImage', img);
-                                location.reload();
                             },
                             error: function () {
 
@@ -208,7 +207,7 @@ if ($uid == 'unknown') {
                 return;
             }
             if (!thumbnail) {
-                alert("缩略图不能为空")
+                alert("缩略图不能为空");
                 return;
             }
             $.post(
@@ -224,7 +223,10 @@ if ($uid == 'unknown') {
                 function (data, status) {
                     if (status === 'success') {
                         alert("添加成功");
-                    }
+                        location.reload();
+                    }else{
+                        alert("保存失败，请重新尝试")
+					}
                 }
             )
         });

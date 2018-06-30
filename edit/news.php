@@ -75,7 +75,7 @@ if ($uid == 'unknown') {
 	<link rel="stylesheet" href="../assets/css/Huploadify.css">
 	<link rel="stylesheet" href="../assets/css/jquery-confirm.min.css">
 </head>
-<body>
+<body>c
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -95,10 +95,22 @@ if ($uid == 'unknown') {
 		<ul class="nav nav-sidebar">
 			<li><a href="index.php">俱乐部</a></li>
 			<li class="active"><a href="news.php">新闻</a></li>
+			<li><a href="users.php">用户</a></li>
 		</ul>
 	</div>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<div class="row">
+			<div class="col-md-12">
+				<form class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" id='search-item' placeholder="新闻标题">
+					</div>
+					<button type="button" class="btn btn-primary" id="search"
+					">
+					查看所有
+					</button>
+				</form>
+			</div>
 			<div class="col-md-12">
 				<h4><span>新闻标题</span></h4>
 				<input type="text" class="form-control" id="news-title" placeholder="新闻标题">
@@ -142,19 +154,82 @@ if ($uid == 'unknown') {
 		</div>
 	</div>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">新闻</h4>
+			</div>
+			<div class="modal-body">
+				<select id="modelRecommendPoi" multiple class="form-control">
+					<option></option>
+				</select>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger del_club">删除</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">选择</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="../assets/js/jquery.Huploadify.js" rel="script"></script>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="../assets/js/jquery-ui.min.js" rel="script"></script>
+<script src="../assets/js/jquery-confirm.min.js" rel="script"></script>
 <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js"></script>
 <script>
     $(document).ready(function () {
         var thumbnail = null;
 
+        $("#search").click(function () {
+            let q = $("#search-item").val();
+            var $myModal = $("#myModal");
+            $myModal.modal('show');
+            $('.modal-dialog').draggable();
+            $("#modelRecommendPoi").empty();
 
+            let url = `search_news.php?q=${q}`;
+            $.getJSON(url, function (result) {
+                $.each(result.data, function (i, v) {
+                    $("#modelRecommendPoi").append('<option  ' +
+                        '" data-title="' + v.title +
+                        '">' + v.title +
+                    '</option>'
+                    )
+                    ;
+                });
+            });
+        });
+        $("#modelRecommendPoi").change(function () {
+            let news_title = $(this).find(':selected').data('title');
+            $(".del_club").confirm({
+                title: "",
+                content: "确定要删除？",
+                confirmButton: "确定",
+                cancelButton: "取消",
+                confirm: function () {
+                    $.getJSON(`delete_news.php?title=${news_title}`, function (result) {
+                        console.log(result.code);
+                        if (result.code === '0000') {
+                            $('#modelRecommendPoi option').filter('[data-title="' + news_title + '"]').remove();
+                            alert("删除成功");
+                        } else {
+                            alert("删除失败，请重新尝试");
+                        }
+                    })
+
+                }
+
+            });
+
+        });
         $('#summernote').summernote({
             placeholder: '河牌网',
             tabsize: 2,
@@ -224,9 +299,9 @@ if ($uid == 'unknown') {
                     if (status === 'success') {
                         alert("添加成功");
                         location.reload();
-                    }else{
+                    } else {
                         alert("保存失败，请重新尝试")
-					}
+                    }
                 }
             )
         });

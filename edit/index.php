@@ -12,9 +12,10 @@ if ($uid == 'unknown') {
 	<title>河牌网</title>
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<style>
-		.main{
+		.main {
 			margin-top: 80px;
 		}
+
 		.sidebar {
 			position: fixed;
 			top: 51px;
@@ -28,16 +29,20 @@ if ($uid == 'unknown') {
 			background-color: #f5f5f5;
 			border-right: 1px solid #eee;
 		}
-		.sidebar li a{
+
+		.sidebar li a {
 			color: #428bca;
 		}
+
 		.sidebar li.active {
-			color: #fff ;
+			color: #fff;
 			background: #428bca;
 		}
+
 		.sidebar li.active a {
 			color: #fff;
 		}
+
 		.club-content {
 			margin-top: 20px;
 
@@ -51,22 +56,26 @@ if ($uid == 'unknown') {
 			background: blue;
 			color: #ffffff;
 		}
+
 		#show-intro_imgs > div, #show-logo > div, #show-qrcode_img > div {
 			display: inline-flex;
 			flex-direction: column;
 			align-items: center;
 			margin-right: 10px;
 		}
-		#show-intro_imgs img, #show-logo img, #show-qrcode_img img{
+
+		#show-intro_imgs img, #show-logo img, #show-qrcode_img img {
 			height: 100px;
 			width: 100px;
 			display: inline-block;
 		}
+
 		#show-intro_imgs span, #show-logo span, #show-qrcode_img span {
 			border: 1px solid #ddd;
 		}
+
 		.del_img {
-			margin-top:10px;
+			margin-top: 10px;
 		}
 	</style>
 	<link rel="stylesheet" href="../assets/css/Huploadify.css">
@@ -76,7 +85,8 @@ if ($uid == 'unknown') {
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -91,6 +101,7 @@ if ($uid == 'unknown') {
 		<ul class="nav nav-sidebar">
 			<li class="active"><a href="#">俱乐部</a></li>
 			<li><a href="news.php">新闻</a></li>
+			<li><a href="users.php">用户</a></li>
 		</ul>
 	</div>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -174,7 +185,7 @@ if ($uid == 'unknown') {
 				</select>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger del_club" style="visibility: hidden;" >删除</button>
+				<button type="button" class="btn btn-danger del_club" style="visibility: hidden;">删除</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">选择</button>
 			</div>
 		</div>

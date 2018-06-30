@@ -1,28 +1,30 @@
 <?php
-$url_path=parse_url($_SERVER['REQUEST_URI'])['path'];
+$url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $arrow_html = "<img src=\"assets/images/arrow.png\"  class=\"img-responsive\">";
 $index_page_active = null;
 $club_page_active = null;
 $news_page_active = null;
 $celue_page_active = null;
 $bbs_page_active = null;
-if (in_array($url_path,['/','/index.php'])) {
+if (in_array($url_path, ['/', '/index.php'])) {
     $index_page_active = 'active';
 } elseif ($url_path == '/club.php' || $url_path == '/club_detail.php') {
     $club_page_active = 'active';
 } elseif ($url_path == '/news.php' || $url_path == '/news_detail.php') {
     $news_page_active = 'active';
-}elseif ($url_path == '/celue.php' || $url_path == '/celue_detail.php'){
+} elseif ($url_path == '/celue.php' || $url_path == '/celue_detail.php') {
     $celue_page_active = 'active';
-}elseif ($url_path == '/bbs.php') {
+} elseif ($url_path == '/bbs.php') {
     $bbs_page_active = 'active';
 }
 echo <<< EOF
 <div class="row logo">
-<img src="assets/images/logo.jpeg" class="img-responsive" style="width: 80px;height: 80px">
 
 </div>
 <div class="row nav">
+    <div>
+        <img src="assets/images/logo.jpeg" class="img-responsive" style="width: 60px;height: 60px">
+    </div>
     <div class="nav-item $index_page_active">
         <a href="index.php">首页</a>
         $arrow_html

@@ -6,12 +6,13 @@
     margin: 0 ;
 }
 .logo {
-    margin-top: 10px;
-    height: 70px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    /*margin-top: 10px;*/
+    /*height: 70px;*/
+    /*margin-bottom: 10px;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: flex-end;*/
+    /*margin-right:20px;*/
 }
 
 .nav {
@@ -32,7 +33,7 @@
 }
 
 .nav .nav-item {
-    width: 24%;
+    width: 224px;
     height: 100%;
     padding: 10px 0;
     display: flex;

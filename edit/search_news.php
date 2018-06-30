@@ -27,6 +27,6 @@ $cursor = $news_co->find($query, ['typeMap' => $typeMap]);
 foreach ($cursor as $new) {
     array_push($news, $new);
 }
-
+$news = array_values(array_unique($news));
 echo json_encode(['code' => '0', 'data' => $news]);
 exit();

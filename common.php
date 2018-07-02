@@ -22,8 +22,8 @@ echo <<< EOF
 
 </div>
 <div class="row nav">
-    <div>
-        <img src="assets/images/logo.jpeg" class="img-responsive" style="width: 60px;height: 60px">
+    <div style="background:white">
+        <img src="assets/images/logo.png" class="img-responsive" style="width: 60px;height: 60px">
     </div>
     <div class="nav-item $index_page_active">
         <a href="index.php">首页</a>
